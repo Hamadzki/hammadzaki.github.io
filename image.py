@@ -3,36 +3,47 @@ from PIL import Image
 from tqdm import tqdm
 
 # Convert all images to .webp with dynamic quality based on file size
-def convert_images_to_webp(folder_path, quality=90, size_threshold=200):
+def convert_images_to_webp(folder_path, quality=80):
     output_folder = folder_path
     os.makedirs(output_folder, exist_ok=True)
 
-    for filename in tqdm(os.listdir(folder_path)):
-        if filename.endswith('.jpg') or filename.endswith('.webp'):
+    for filename in os.listdir(folder_path):
+        # Check for both .jpg and .png files
+        if filename.endswith('.jpg') or filename.endswith('.png'):
             img_path = os.path.join(folder_path, filename)
-            file_size_kb = os.path.getsize(img_path) / 1024  # Get file size in KB
             
             img = Image.open(img_path)
-
-            # Set quality based on file size
-            if file_size_kb < size_threshold:
-                save_quality = 98
-            else:
-                save_quality = quality
 
             webp_filename = os.path.splitext(filename)[0] + '.webp'
             webp_path = os.path.join(output_folder, webp_filename)
 
-            img.save(webp_path, 'webp', quality=save_quality)
-            print(f'Converted {filename} to {webp_filename} with quality {save_quality}.')
+            # Save the image as WebP
+            img.save(webp_path, 'webp', quality=quality)
+            print(f'Converted {filename} to {webp_filename} with quality {quality}.')
+
+
+# Function to optimize and reduce the size of WebP files
+def optimize_webp_images(folder_path, quality=70):
+    for filename in os.listdir(folder_path):
+        # Check for webp files
+        if filename.endswith('.webp'):
+            img_path = os.path.join(folder_path, filename)
+            # file_size_kb = os.path.getsize(img_path) / 1024  # Get file size in KB
+            
+            img = Image.open(img_path)
+
+            # Set quality based on file size
+            
+            img.save(img_path, 'webp', quality=quality)
+            print(f'Reduced size of {filename} with quality {quality}.')
 
 
 # Convert specific images based on list and file size condition
-def convert_specific_images_to_webp(folder_path, image_names, quality=90, size_threshold=200):
+def convert_specific_images_to_webp(folder_path, image_names, quality=60):
     output_folder = folder_path
     os.makedirs(output_folder, exist_ok=True)
 
-    for image_name in tqdm(image_names):
+    for image_name in (image_names):
         img_path_jpg = os.path.join(folder_path, image_name + '.jpg')
         img_path_png = os.path.join(folder_path, image_name + '.webp')
 
@@ -44,25 +55,22 @@ def convert_specific_images_to_webp(folder_path, image_names, quality=90, size_t
             print(f'Image {image_name} not found as .jpg or .webp in {folder_path}.')
             continue
 
-        file_size_kb = os.path.getsize(img_path) / 1024  # Get file size in KB
         img = Image.open(img_path)
-
-        # Set quality based on file size
-        if file_size_kb < size_threshold:
-            save_quality = 98
-        else:
-            save_quality = quality
 
         webp_filename = image_name + '.webp'
         webp_path = os.path.join(output_folder, webp_filename)
 
-        img.save(webp_path, 'webp', quality=save_quality)
-        print(f'Converted {image_name} to {webp_filename} with quality {save_quality}.')
+        img.save(webp_path, 'webp', quality=quality)
+        print(f'Converted {image_name} to {webp_filename} with quality {quality}.')
 
 # Example usage:
 # For converting all images
 # convert_images_to_webp('assets/img/certificates')
-# convert_images_to_webp('assets/img/certificates')
+# convert_images_to_webp('assets/img/skills')
+
+# convert_images_to_webp('assets/img')
+
+optimize_webp_images('assets/img/project')
 
 # For converting specific images
-convert_specific_images_to_webp('assets/img', ['my-profile-img.jpg'])
+# convert_specific_images_to_webp('assets/img/skills', ['airflow.png'])
