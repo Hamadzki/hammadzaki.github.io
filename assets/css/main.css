@@ -318,49 +318,6 @@ h6 {
   color: var(--accent-color);
 }
 
-.navmenu .active .toggle-dropdown,
-.navmenu .active:focus .toggle-dropdown {
-  background-color: var(--accent-color);
-  color: var(--contrast-color);
-  transform: rotate(180deg);
-}
-
-.navmenu .dropdown {
-  display: block;
-}
-
-.navmenu .dropdown a,
-.navmenu .dropdown a:focus {
-  color: --nav-dropdown-color;
-}
-
-.navmenu .dropdown a:hover,
-.navmenu .dropdown .active,
-.navmenu .dropdown .active:focus {
-  color: var(--nav-dropdown-hover-color);
-}
-
-.navmenu .dropdown ul {
-  position: static;
-  display: none;
-  z-index: 99;
-  padding: 5px 10px;
-  margin: 5px 10px;
-  background-color: var(--nav-dropdown-background-color);
-  border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
-  box-shadow: none;
-  transition: all 0.5s ease-in-out;
-}
-
-.navmenu .dropdown ul ul {
-  background-color: rgba(33, 37, 41, 0.1);
-}
-
-.navmenu .dropdown>.dropdown-active {
-  display: block;
-  background-color: rgba(33, 37, 41, 0.03);
-}
-
 
 /*--------------------------------------------------------------
 # Preloader
@@ -556,8 +513,8 @@ section,
 
 .home h2 {
   margin: 0;
-  font-size: 64px;
-  font-weight: 700;
+  font-size: 48px;
+  font-weight: 600;
 }
 
 .home p {
@@ -740,10 +697,11 @@ body {
 
 .projects-row {
   display: flex;
-  flex-wrap: wrap; /* Ensures the projects wrap onto the next line if needed */
-  gap: 20px; /* Adds space between the project boxes */
-  padding: 10px;
-  margin-left: 300px; /* Adds space to avoid overlapping with the navmenu */
+  flex-wrap: wrap;  /* Ensures the projects wrap onto the next line if needed */
+  gap: 35px; /* Increased gap between project boxes */
+  padding: 20px;
+  margin-left: 30px; /* Adds space to avoid overlapping with the navmenu */
+  transition: opacity 0.5s ease-in-out;
 }
 
 .project-container {
@@ -755,6 +713,33 @@ body {
   padding: 15px;
   width: 300px; /* Width of each project box */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s, opacity 0.5s ease-in-out, height 0.5s ease-in-out;
+  gap: 45px;
+}
+
+.project-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  border-radius: 10px;
+  padding: 15px;
+  width: 300px; /* Width of each project box */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.5s ease-in-out, box-shadow 0.3s, opacity 0.5s ease-in-out, height 0.5s ease-in-out;
+  gap: 45px;
+  opacity: 1; /* Initial opacity */
+}
+
+.project-container.hidden {
+  opacity: 0;
+  display: none;
+  transform: translateY(-20px);
+}
+
+.project-container:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .description-box {
@@ -763,7 +748,8 @@ body {
   align-items: right;
   text-align: center;
   margin-top: 15px;
-}
+  padding: 10px;
+  }
 
 .description-box h3 {
   margin-top: 0;
@@ -815,12 +801,12 @@ body {
 /*  text-align: center; /* Center text within the span */
 /* /* } */
 
-
 .image-box img {
-  max-width: 95%; /* Adjust percentage to control the image size */
+  width: 100%; /* Adjust percentage to control the image size */
   height: auto; /* Maintain aspect ratio */
   border-radius: 8px;
   object-fit: cover;
+  display: block;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -855,45 +841,6 @@ body {
 }
 
 /* adjust the nav bar and also the project containers */
-
-.projects-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 35px; /* Increased gap between project boxes */
-  padding: 20px;
-  margin-left: 30px;
-  transition: opacity 0.5s ease-in-out;
-}
-
-
-.project-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: white;
-  border-radius: 10px;
-  padding: 15px;
-  width: 300px; /* Width of each project box */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s, box-shadow 0.3s, opacity 0.5s ease-in-out, height 0.5s ease-in-out;
-  gap: 45px;
-}
-
-
-
-.project-container:hover {
-  transform: scale(1.05);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.image-box img {
-  width: 100%;
-  display: block;
-}
-
-.description-box {
-  padding: 10px;
-}
 
 .filters {
   list-style: none;
@@ -931,20 +878,6 @@ body {
   color: #fff;
   border: 2px solid #0056b3;
 }
-
-/* Smooth transitions for project containers */
-.project-container {
-  opacity: 1;
-  display: block;
-  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
-}
-
-.project-container.hidden {
-  opacity: 0;
-  display: none;
-  transform: translateY(-20px);
-}
-
 
 /*--------------------------------------------------------------
 # certificate Section
@@ -1210,8 +1143,6 @@ body {
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Increase shadow on hover */
 }
 
-
-
 .skill-item img {
   width: 24px;
   height: 24px;
@@ -1256,8 +1187,6 @@ body {
   color: white; /* Change text to white on hover */
   transform: scale(1.1);
 }
-
-
 
 /*--------------------------------------------------------------
 # Starter Section Section
