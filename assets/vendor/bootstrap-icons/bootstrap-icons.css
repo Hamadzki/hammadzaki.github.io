@@ -908,6 +908,7 @@ url("./fonts/bootstrap-icons.woff?dd67030699838ea613ee6dbda90effa6") format("wof
 .bi-link-45deg::before { content: "\f470"; }
 .bi-link::before { content: "\f471"; }
 .bi-linkedin::before { content: "\f472"; }
+.bi-github::before {content: "\F3ED";}
 .bi-list-check::before { content: "\f473"; }
 .bi-list-nested::before { content: "\f474"; }
 .bi-list-ol::before { content: "\f475"; }

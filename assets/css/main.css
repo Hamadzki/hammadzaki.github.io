@@ -521,6 +521,13 @@ section,
   font-weight: 600;
 }
 
+@media (max-width: 768px) {
+  .home h2 {
+    font-size: 36px;
+  }
+}
+
+
 .home p {
   margin: 5px 0 0 0;
   font-size: 26px;
