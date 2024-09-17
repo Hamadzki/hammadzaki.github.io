@@ -711,7 +711,7 @@ body {
   flex-wrap: wrap;  /* Ensures the projects wrap onto the next line if needed */
   gap: 35px; /* Increased gap between project boxes */
   padding: 20px;
-  margin-left: 30px; /* Adds space to avoid overlapping with the navmenu */
+  margin-left: 60px; /* Adds space to avoid overlapping with the navmenu */
   transition: opacity 0.5s ease-in-out;
 }
 
@@ -724,21 +724,8 @@ body {
   padding: 15px;
   width: 300px; /* Width of each project box */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s, box-shadow 0.3s, opacity 0.5s ease-in-out, height 0.5s ease-in-out;
-  gap: 45px;
-}
-
-.project-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: white;
-  border-radius: 10px;
-  padding: 15px;
-  width: 300px; /* Width of each project box */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.5s ease-in-out, box-shadow 0.3s, opacity 0.5s ease-in-out, height 0.5s ease-in-out;
-  gap: 45px;
+  gap: 15px; /* Reduced gap within the project container */
   opacity: 1; /* Initial opacity */
 }
 
@@ -756,22 +743,21 @@ body {
 .description-box {
   display: flex;
   flex-direction: column;
-  align-items: right;
+  align-items: center; /* Center text and description */
   text-align: center;
-  margin-top: 15px;
   padding: 10px;
-  }
+}
 
-.description-box h3 {
-  margin-top: 0;
-  margin-bottom: -8px; /* Reduced margin below the heading */
+.description-box h5 {
+  margin-top: 0; /* Remove top margin to ensure consistent spacing */
+  margin-bottom: 0; /* Adjust space below the heading */
   color: #333;
 }
 
 .description-box p {
   color: #666;
   font-size: 14px;
-  margin-bottom: 10px;
+  margin: 10px 0; /* Ensure consistent spacing */
 }
 
 .tags {
@@ -780,12 +766,6 @@ body {
   flex-wrap: wrap;
   gap: 8px;
 }
-
-.tag:hover {
-  background: #004494;
-  color: #d0eaff;
-}
-
 
 .tag {
   background: #0056b3;
@@ -796,21 +776,34 @@ body {
   transition: background 0.3s ease, color 0.3s ease;
 }
 
-
 /* stylish tags */
 /*  */
-/*.tag {
-  border: 2px solid #007bff; /* Bright blue border */
-/*   padding: 6px 10px; /* Increased padding for better spacing */
-/*   background-color: #e9f7ff; /* Light blue background */
-/*   border-radius: 50px; /* Fully rounded corners */
-/*   margin: 2px 3px; /* Added space between bounding boxes */
-/*   display: inline-block; /* Ensure spans do not break into new lines */
-/*   font-size: 14px; /* Font size for better readability */
-/*   font-weight: 600; /* Slightly bold text */
-/*   color: #007bff; /* Match text color with border for consistency */
-/*  text-align: center; /* Center text within the span */
-/* /* } */
+/* .tag {
+  border: 2px solid #007bff;
+  padding: 6px 10px; 
+  background-color: #e9f7ff; 
+  border-radius: 50px; 
+  margin: 2px 3px; 
+  display: inline-block; 
+  font-size: 14px; 
+  font-weight: 600;
+  color: #007bff; 
+  text-align: center; 
+} */
+
+.tag:hover {
+  background: #004494;
+  color: #d0eaff;
+}
+
+.image-box {
+  display: flex;
+  justify-content: center; /* Centers the image horizontally */
+  align-items: center; /* Centers the image vertically */
+  padding: 0; /* Remove padding */
+  margin: 0; /* Remove margin */
+  height: auto; /* Adjust height based on content if needed */
+}
 
 .image-box img {
   width: 100%; /* Adjust percentage to control the image size */
@@ -818,24 +811,13 @@ body {
   border-radius: 8px;
   object-fit: cover;
   display: block;
+  margin: 0 auto;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
 
 .image-box:hover img {
   transform: scale(1.05);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-}
-
-
-
-.image-box {
-  display: flex;
-  justify-content: center; /* Centers the image horizontally */
-  align-items: center; /* Centers the image vertically (if needed) */
-  padding: 0; /* Remove any padding around the image */
-  margin: 0; /* Remove any margin around the container */
-  height: auto; /* Adjust height based on content if needed */
 }
 
 .github-link {
@@ -850,8 +832,6 @@ body {
   transform: scale(1.3); /* Make icon bigger on hover */
   color: #000;           /* Optional: Change icon color on hover */
 }
-
-/* adjust the nav bar and also the project containers */
 
 .filters {
   list-style: none;
