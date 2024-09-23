@@ -104,5 +104,5 @@ def optimize_specific_webp_images(image_paths, quality=40):
 # convert_specific_images_to_webp('assets/img/skills', ['airflow.png'])
 
 # images_path = ['portfolio/assets/img/project/crypto.webp','portfolio/assets/img/project/temperature.webp']
-images_path = ['portfolio/assets/img/project/crypto.webp']
+images_path = ['assets/img/project/NLP-With-HuggingFace1.webp'] 
 optimize_specific_webp_images(images_path)
